@@ -1,5 +1,4 @@
 package hexlet.code;
-
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
@@ -32,11 +31,11 @@ public class App implements Callable<String> {
 //  Define your business logic in the run or call method of your class. This method is called after parsing
 //  is successfully completed.
     @Override
-    public String call() throws Exception { // your business logic goes here...
+    public final String call() throws Exception { // your business logic goes here...
         Differ differ = new Differ();
         System.out.println(differ.generate(filepath1, filepath2));
         return "call is working";
-            }
+    }
 
     public static void main(String[] args) throws Exception {
 //  In the main method of your class, use the CommandLine.execute method bootstrap your application.

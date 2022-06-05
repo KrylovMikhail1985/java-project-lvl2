@@ -9,6 +9,7 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
+    id 'checkstyle'
 }
 
 repositories {
@@ -22,6 +23,7 @@ dependencies {
 
     // configuring Gradle to use "picocli" as an external dependency in your project
     implementation 'info.picocli:picocli:4.6.3'
+//    annotationProcessor 'info.picocli:picocli-codegen:4.6.3'
 
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:31.1-jre'
@@ -31,6 +33,10 @@ dependencies {
 
 
 }
+
+//compileJava {
+//    options.compilerArgs += ["-Aproject=${project.group}/${project.name}"]
+//}
 
 application {
     // Define the main class for the application.

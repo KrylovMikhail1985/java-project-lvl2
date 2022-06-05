@@ -5,5 +5,7 @@ run-dist:
 build:
 	./gradlew clean
 	./gradlew installDist
+check:
+	gradle checkstyleMain
 # игнорирование папки Build. Без этого команда не работает
 .PHONY: build

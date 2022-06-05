@@ -2,10 +2,12 @@ package hexlet.code;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.nio.file.Path;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.TreeMap;
 import static java.nio.file.Files.readString;
 
-public class Differ {
+public final class Differ {
     public String generate(Path path1, Path path2) throws Exception {
         Map<String, Object> file1 = jsonFileToMap(path1);
         Map<String, Object> file2 = jsonFileToMap(path2);
@@ -37,7 +39,7 @@ public class Differ {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(readString(fullPath), TreeMap.class);
     }
-    public static Path pathToFullPath (Path path) {
+    public static Path pathToFullPath(Path path) {
         ArrayList<String> startPath = new ArrayList<>();
         startPath.add("home");
         startPath.add("mikhail");
