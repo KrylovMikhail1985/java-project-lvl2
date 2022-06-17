@@ -5,8 +5,8 @@ run-dist:
 build:
 	./gradlew clean
 	./gradlew installDist
-	./gradlew test
-	gradle check
+#	./gradlew test
+#	gradle check
 check:
 	gradle checkstyleMain
 	gradle checkstyleTest
