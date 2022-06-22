@@ -22,7 +22,7 @@ public class ParserTest {
 
     @Test
     public void generateTestJson() throws Exception {
-        Path filePath1 = of("/home/mikhail/java-project-lvl2/src/test/resources/file1Test.json");
+        Path filePath1 = of("file1Test.json");
         Path filePath2 = of("file2Test.json");
         Parser parser = new Parser();
         String actual = parser.generate(filePath1, filePath2);
@@ -32,7 +32,7 @@ public class ParserTest {
     @Test
     public void generateTestYaml() throws Exception {
         Path filePath1 = of("file3Test.yaml");
-        Path filePath2 = of("/home/mikhail/java-project-lvl2/src/test/resources/file4Test.yaml");
+        Path filePath2 = of("file4Test.yaml");
         Parser parser = new Parser();
         String actual = parser.generate(filePath1, filePath2);
         assertEquals(expected, actual);
