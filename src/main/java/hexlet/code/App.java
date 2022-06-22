@@ -32,8 +32,8 @@ public class App implements Callable<String> {
 //  is successfully completed.
     @Override
     public final String call() throws Exception { // your business logic goes here...
-        Differ differ = new Differ();
-        System.out.println(differ.generate(filepath1, filepath2));
+        Parser parser = new Parser();
+        System.out.println(parser.generate(filepath1, filepath2));
         return "call is working";
     }
 
