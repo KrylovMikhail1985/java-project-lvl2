@@ -11,7 +11,4 @@ checked: true
 numbers4: [4, 5, 6]
 chars1: ["a", "b", "c"]
 chars2: false
-obj1:
-    nestedKey: "value"
-    isNested: true
 

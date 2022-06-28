@@ -25,15 +25,15 @@ public class App implements Callable<String> {
     @Parameters(index = "1", description = "path to second file.")
     private static Path filepath2;
 
-    @Option(names = {"-f", "--format"}, description = "output format [default: stylish]")
+    @Option(names = {"-f", "--format"}, description = "output format \"stylish\" or \"plain\" [default: stylish]")
     private String format = "stylish";
 
 //  Define your business logic in the run or call method of your class. This method is called after parsing
 //  is successfully completed.
     @Override
     public final String call() throws Exception { // your business logic goes here...
-        Parser parser = new Parser();
-        System.out.println(parser.generate(filepath1, filepath2, format));
+        Differ diff = new Differ();
+        System.out.println(diff.generate(filepath1, filepath2, format));
         return "call is working";
     }
 

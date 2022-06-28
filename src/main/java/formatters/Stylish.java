@@ -1,12 +1,12 @@
-package style;
+package formatters;
 
 import java.util.Map;
 import java.util.Set;
-import hexlet.code.Parser;
+import hexlet.code.Differ;
 
 public class Stylish {
     public static String formatStylish(Map file1, Map file2, int count) {
-        Set<String> allKeys = Parser.getSortedKeys(file1, file2);
+        Set<String> allKeys = Differ.getSortedKeys(file1, file2);
         String space = " ";
         final StringBuilder sb = new StringBuilder(space.repeat(count) + "{\n");
         for (String key: allKeys) {
