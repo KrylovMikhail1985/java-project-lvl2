@@ -64,6 +64,7 @@ public class ParserTest {
                   + numbers4: [4, 5, 6]
                     obj1:
                          {
+                           - aaa: 123
                            - isNested: false
                            + isNested: true
                            + nestedKey: value

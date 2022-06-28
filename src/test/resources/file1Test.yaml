@@ -7,6 +7,7 @@ numbers1: [1, 2, 3, 4]
 numbers2: [2, 3, 4, 5]
 id: 45
 obj1:
+  aaa: 123
   isNested: false
   new: 123
 default: null

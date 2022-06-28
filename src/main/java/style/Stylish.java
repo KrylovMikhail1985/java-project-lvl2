@@ -15,30 +15,31 @@ public class Stylish {
             } else if (!file1.containsKey(key) && file2.containsKey(key)) {
                 sb.append(space.repeat(count) + "  + " + key + ": " + file2.get(key) + "\n");
             } else {
-                Object objOf1 = file1.get(key);
-                Object objOf2 = file2.get(key);
-                if (objOf1 instanceof Map && objOf2 instanceof Map) {
-                    sb.append(space.repeat(count) + "    " + key + ":\n");
-                    final  int preSpace = 5;
-                    int spaceLength = preSpace + count + key.length();
-                    sb.append(space.repeat(count));
-                    sb.append(formatStylish((Map) objOf1, (Map) objOf2, spaceLength));
-                    sb.append("\n");
-                } else {
-                    if (objOf1 == null || objOf2 == null ? objOf1 == objOf2 : file1.get(key).equals(file2.get(key))) {
-                        sb.append(space.repeat(count) + "    " + key + ": " + file1.get(key) + "\n");
-                    } else {
-                        sb.append(space.repeat(count) + "  - " + key + ": " + file1.get(key) + "\n");
-                        sb.append(space.repeat(count) + "  + " + key + ": " + file2.get(key) + "\n");
-                    }
-                }
+                sb.append(stylishSame(count, key, file1, file2));
             }
         }
         sb.append(space.repeat(count) + "}");
         return sb.toString();
     }
-//    public String stylishSame (int count, String key, String value) {
-//        String space = " ";
-//        return space.repeat(count) + "    " + key + ": " + value + "\n";
-//    }
+    public static String stylishSame(int count, String key, Map file1, Map file2) {
+        String space = " ";
+        Object objOf1 = file1.get(key);
+        Object objOf2 = file2.get(key);
+        final StringBuilder sb = new StringBuilder();
+        if (objOf1 instanceof Map && objOf2 instanceof Map) {
+            sb.append(space.repeat(count) + "    " + key + ":\n");
+            final  int preSpace = 5;
+            int spaceLength = preSpace + count + key.length();
+            sb.append(formatStylish((Map) objOf1, (Map) objOf2, spaceLength));
+            sb.append("\n");
+        } else {
+            if (objOf1 == null || objOf2 == null ? objOf1 == objOf2 : file1.get(key).equals(file2.get(key))) {
+                sb.append(space.repeat(count) + "    " + key + ": " + file1.get(key) + "\n");
+            } else {
+                sb.append(space.repeat(count) + "  - " + key + ": " + file1.get(key) + "\n");
+                sb.append(space.repeat(count) + "  + " + key + ": " + file2.get(key) + "\n");
+            }
+        }
+        return sb.toString();
+    }
 }
