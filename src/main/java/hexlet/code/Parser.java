@@ -2,43 +2,45 @@ package hexlet.code;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.LinkedHashSet;
+import java.util.Set;
+import java.util.HashSet;
 import java.util.Map;
-import java.util.TreeMap;
+import java.util.stream.Collectors;
+import style.Stylish;
+
 import static java.nio.file.Files.readString;
 
 public final class Parser {
-    public String generate(Path path1, Path path2) throws Exception {
-        TreeMap<String, Object> file1 = fileToMap(path1);
-        TreeMap<String, Object> file2 = fileToMap(path2);
-        final StringBuilder sb = new StringBuilder("{\n");
-        for (Map.Entry<String, Object> str: file1.entrySet()) {
-            if (!file2.containsKey(str.getKey())) {
-                sb.append("  - ").append(str.getKey()).append(": ").append(str.getValue()).append("\n");
-            } else {
-                if (str.getValue().equals(file2.get(str.getKey()))) {
-                    sb.append("    ").append(str.getKey()).append(": ").append(str.getValue()).append("\n");
-                } else {
-                    sb.append("  - ").append(str.getKey()).append(": ").append(str.getValue()).append("\n");
-                    sb.append("  + ").append(str.getKey()).append(": ").append(file2.get(str.getKey())).append("\n");
-                }
-            }
+    public String generate(Path path1, Path path2, String formatOfOutput) throws Exception {
+        // create Maps from paths
+        Map file1 = fileToMap(path1);
+        Map file2 = fileToMap(path2);
+        // collect result in collecting method
+        String result;
+        int spaceBeforeWords = 0;
+        switch (formatOfOutput) {
+            case "stylish" :
+                result = Stylish.formatStylish(file1, file2, spaceBeforeWords);
+                break;
+            default:
+                result = "pointed format of output \"" + formatOfOutput +  "\" is not correct! Try without indicating";
         }
-        for (Map.Entry<String, Object> str2: file2.entrySet()) {
-            if (!file1.containsKey(str2.getKey())) {
-                sb.append("  + ").append(str2.getKey()).append(": ").append(str2.getValue()).append("\n");
-            }
-        }
-
-        sb.append("}");
-        return sb.toString();
+        return result;
     }
-    public TreeMap<String, Object> fileToMap(Path filePath) throws Exception {
+    public static Set<String> keysFromMap(Map<String, Object> map) {
+        Set<String> keys = new HashSet<>();
+        for (Map.Entry<String, Object> pair: map.entrySet()) {
+            keys.add(pair.getKey());
+        }
+        return keys;
+    }
+    public Map fileToMap(Path filePath) throws Exception {
         String currentPath = Paths.get(".").toAbsolutePath().normalize().toString();
         Path fullPath = pathToFullPath(filePath, currentPath);
-        TreeMap<String, Object> file = null;
+        Map file = null;
         if (filePath.toString().endsWith(".json")) {
             file = jsonFileToMap(fullPath);
         } else if (filePath.toString().endsWith(".yaml")) {
@@ -46,13 +48,13 @@ public final class Parser {
         }
         return file;
     }
-    public static TreeMap<String, Object> jsonFileToMap(Path path) throws Exception {
+    public static Map jsonFileToMap(Path path) throws Exception {
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(readString(path), TreeMap.class);
+        return mapper.readValue(readString(path), Map.class);
     }
-    public static TreeMap<String, Object> yamlFileToMap(Path path) throws Exception {
+    public static Map yamlFileToMap(Path path) throws Exception {
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-        return mapper.readValue(readString(path), TreeMap.class);
+        return mapper.readValue(readString(path), Map.class);
     }
     public static Path pathToFullPath(Path path, String currentPath) {
         String fullPath = path.toString();
@@ -63,5 +65,11 @@ public final class Parser {
             }
         }
         return Path.of(fullPath);
+    }
+    public static Set<String> getSortedKeys(Map<String, Object> firstMap, Map<String, Object> secondMap) {
+        Set<String> keys1 = keysFromMap(firstMap);
+        Set<String> keys2 = keysFromMap(secondMap);
+        keys1.addAll(keys2);
+        return keys1.stream().sorted().collect(Collectors.toCollection(LinkedHashSet::new));
     }
 }
