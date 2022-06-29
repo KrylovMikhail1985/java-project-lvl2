@@ -1,6 +1,6 @@
 # запуск программы из jar
 run-dist:
-	./build/install/java-project-lvl2/bin/java-project-lvl2 -f plain file1.yaml file2.yaml
+	./build/install/java-project-lvl2/bin/java-project-lvl2 -f json file1.yaml file2.yaml
 run-h:
 	./build/install/java-project-lvl2/bin/java-project-lvl2 -h
 # очистка и сборка build

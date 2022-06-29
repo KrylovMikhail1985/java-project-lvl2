@@ -98,4 +98,16 @@ public class DifferTest {
         String actual = generate(filePath1, filePath2, "plain");
         assertEquals(expectedPlain, actual);
     }
+    @Test
+    public void generateTestJsonToJson() throws Exception {
+        final String first = """
+                  {"- age":18,"+ age":24,"+ children":false,"- marriage":false,"+ marriage":true,""";
+        final String second = """
+                  "  name":"Darya","- surname":"Selezneva","+ surname":"Krylova","- www":null}""";
+        final String expectedPlain = first + second;
+        Path filePath1 = of("file1Test.json");
+        Path filePath2 = of("file2Test.json");
+        String actual = generate(filePath1, filePath2, "json");
+        assertEquals(expectedPlain, actual);
+    }
 }

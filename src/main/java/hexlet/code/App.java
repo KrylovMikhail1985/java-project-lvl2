@@ -25,7 +25,8 @@ public class App implements Callable<String> {
     @Parameters(index = "1", description = "path to second file.")
     private static Path filepath2;
 
-    @Option(names = {"-f", "--format"}, description = "output format \"stylish\" or \"plain\" [default: stylish]")
+    @Option(names = {"-f", "--format"}, description = "output format \"stylish\" or \"plain\" or \"json\" "
+            + "[default: stylish]")
     private String format = "stylish";
 
 //  Define your business logic in the run or call method of your class. This method is called after parsing

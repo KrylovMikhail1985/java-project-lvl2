@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import formatters.Json;
 import formatters.Plain;
 import formatters.Stylish;
 import java.nio.file.Path;
@@ -17,15 +18,14 @@ public class Differ {
         // create Maps from paths
         Map file1 = fileToMap(path1);
         Map file2 = fileToMap(path2);
-        // collect result in collecting method
-        String result;
+        // collect result in need Style
         int spaceBeforeWords = 0;
-        result = switch (formatOfOutput) {
+        return switch (formatOfOutput) {
             case "stylish" -> Stylish.formatStylish(file1, file2, spaceBeforeWords);
             case "plain" -> Plain.formatPlain(file1, file2, spaceBeforeWords);
+            case "json" -> Json.formatJson(file1, file2, spaceBeforeWords);
             default -> "pointed format of output \"" + formatOfOutput + "\" is not correct! Try without indicating";
         };
-        return result;
     }
     public static Set<String> keysFromMap(Map<String, Object> map) {
         Set<String> keys = new HashSet<>();
