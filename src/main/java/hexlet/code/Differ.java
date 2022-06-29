@@ -40,4 +40,9 @@ public class Differ {
         keys1.addAll(keys2);
         return keys1.stream().sorted().collect(Collectors.toCollection(LinkedHashSet::new));
     }
+    public static boolean valuesIsDifferent(Map file1, Map file2, String key) {
+        Object objOf1 = file1.get(key);
+        Object objOf2 = file2.get(key);
+        return (objOf1 == null || objOf2 == null ? objOf1 != objOf2 : !objOf1.equals(objOf2));
+    }
 }

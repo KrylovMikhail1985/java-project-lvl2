@@ -4,6 +4,8 @@ import hexlet.code.Differ;
 import java.util.Map;
 import java.util.Set;
 
+import static hexlet.code.Differ.valuesIsDifferent;
+
 public class Plain {
     public static String formatPlain(Map file1, Map file2, int count) {
         Set<String> allKeys = Differ.getSortedKeys(file1, file2);
@@ -19,11 +21,6 @@ public class Plain {
             }
         }
         return sb.toString();
-    }
-    public static boolean valuesIsDifferent(Map file1, Map file2, String key) {
-        Object objOf1 = file1.get(key);
-        Object objOf2 = file2.get(key);
-        return (objOf1 == null || objOf2 == null ? objOf1 != objOf2 : !objOf1.equals(objOf2));
     }
     public static String getValue(Map file1, String key) {
         String result;
