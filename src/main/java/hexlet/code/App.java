@@ -12,6 +12,9 @@ import java.nio.file.Path;
 //import java.text.Format;
 //import java.time.format.FormatStyle;
 import java.util.concurrent.Callable;
+
+import static hexlet.code.Differ.generate;
+
 //    Annotate the class with @Command and give it a name. The mixinStandardHelpOptions attribute adds --help and
 //     --version options to your application.
 @Command(name = "getDiff", mixinStandardHelpOptions = true, version = "getDiff 1.0",
@@ -33,8 +36,7 @@ public class App implements Callable<String> {
 //  is successfully completed.
     @Override
     public final String call() throws Exception { // your business logic goes here...
-        Differ diff = new Differ();
-        System.out.println(diff.generate(filepath1, filepath2, format));
+        System.out.println(generate(filepath1, filepath2, format));
         return "call is working";
     }
 
