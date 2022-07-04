@@ -26,6 +26,8 @@ public class Json {
                 map.put("  " + key, file2.get(key));
             }
         }
-        return new ObjectMapper().writeValueAsString(map);
+        ObjectMapper mapper = new ObjectMapper();
+//        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+        return mapper.writeValueAsString(map);
     }
 }
