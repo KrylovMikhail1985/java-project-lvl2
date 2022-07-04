@@ -4,17 +4,15 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
+import java.io.File;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Map;
 
 import static java.nio.file.Files.readString;
 
 public final class Parser {
     public static Map<String, Object> fileToMap(String filePath) throws Exception {
-//        System.out.println(Files.readString(Paths.get(String.valueOf(filePath))));
-        String currentPath = Paths.get(".").toAbsolutePath().normalize().toString();
-        Path fullPath = pathToFullPath(filePath, currentPath);
+        Path fullPath = pathToFullPath(filePath);
         Map<String, Object> file = null;
         if (filePath.endsWith(".json")) {
             file = jsonFileToMap(fullPath);
@@ -31,14 +29,13 @@ public final class Parser {
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         return mapper.readValue(readString(path), new TypeReference<>() { });
     }
-    public static Path pathToFullPath(String path, String currentPath) {
-        String fullPath = path;
+    public static Path pathToFullPath(String path) throws IllegalAccessException {
+        String path1 = "src/main/resources";
+        File file = new File(path1);
+        String absolutePath = file.getAbsolutePath();
         if (!path.startsWith("/home")) {
-            fullPath = currentPath + "/src/main/resources/" + path;
-            if (!Path.of(fullPath).toFile().exists()) {
-                fullPath = currentPath + "/src/test/resources/" + path;
-            }
+            return Path.of(absolutePath + "/" + path);
         }
-        return Path.of(fullPath);
+        return Path.of(path);
     }
 }

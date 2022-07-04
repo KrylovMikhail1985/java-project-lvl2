@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import static hexlet.code.Differ.generate;
 import org.junit.jupiter.api.Assertions;
 
+import java.io.File;
+
 public class DifferTest {
     private final String expected = """
                 {
@@ -21,6 +23,8 @@ public class DifferTest {
     public void generateTestJson() throws Exception {
         String filePath1 = "file1Test.json";
         String filePath2 = "file2Test.json";
+        filePath1 = pathToFullPath(filePath1);
+        filePath2 = pathToFullPath(filePath2);
         String actual = generate(filePath1, filePath2, "stylish");
         Assertions.assertEquals(expected, actual);
     }
@@ -29,6 +33,8 @@ public class DifferTest {
     public void generateTestYaml() throws Exception {
         String filePath1 = "file3Test.yaml";
         String filePath2 = "file4Test.yaml";
+        filePath1 = pathToFullPath(filePath1);
+        filePath2 = pathToFullPath(filePath2);
         String actual = generate(filePath1, filePath2, "stylish");
         Assertions.assertEquals(expected, actual);
     }
@@ -36,6 +42,8 @@ public class DifferTest {
     public void generateTestYaml2() throws Exception {
         String filePath1 = "file1Test.yaml";
         String filePath2 = "file2Test.yaml";
+        filePath1 = pathToFullPath(filePath1);
+        filePath2 = pathToFullPath(filePath2);
         String actual = generate(filePath1, filePath2, "stylish");
         String expected2 = """
                 {
@@ -85,6 +93,8 @@ public class DifferTest {
                   """;
         String filePath1 = "file1Test.yaml";
         String filePath2 = "file2Test.yaml";
+        filePath1 = pathToFullPath(filePath1);
+        filePath2 = pathToFullPath(filePath2);
         String actual = generate(filePath1, filePath2, "plain");
         Assertions.assertEquals(expectedPlain, actual);
     }
@@ -97,7 +107,18 @@ public class DifferTest {
         final String expectedPlain = first + second;
         String filePath1 = "file1Test.json";
         String filePath2 = "file2Test.json";
+        filePath1 = pathToFullPath(filePath1);
+        filePath2 = pathToFullPath(filePath2);
         String actual = generate(filePath1, filePath2, "json");
         Assertions.assertEquals(expectedPlain, actual);
+    }
+    public static String pathToFullPath(String path) throws IllegalAccessException {
+        String path1 = "src/test/resources";
+        File file = new File(path1);
+        String absolutePath = file.getAbsolutePath();
+        if (!path.startsWith("/home")) {
+            return absolutePath + "/" + path;
+        }
+        throw new IllegalAccessException("файл \"" + path + "\" не существует");
     }
 }
