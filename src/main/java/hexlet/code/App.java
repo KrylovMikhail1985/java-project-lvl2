@@ -3,14 +3,7 @@ import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
-//import java.io.File;
-//import java.io.IOException;
-//import java.math.BigInteger;
-//import java.nio.file.Files;
 import java.nio.file.Path;
-//import java.security.MessageDigest;
-//import java.text.Format;
-//import java.time.format.FormatStyle;
 import java.util.concurrent.Callable;
 
 import static hexlet.code.Differ.generate;
@@ -40,13 +33,17 @@ public class App implements Callable<String> {
         return "call is working";
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 //  In the main method of your class, use the CommandLine.execute method bootstrap your application.
 //  This will parse the command line, handle errors, handle requests for usage and version help,
 //  and invoke the business logic.
-        int exitCode = new CommandLine(new App()).execute(args);
+        try {
+            int exitCode = new CommandLine(new App()).execute(args);
 //  The CommandLine.execute method returns an exit code. Your application can call System.exit with this exit code
 //  to signal success or failure to the calling process.
-        System.exit(exitCode);
+            System.exit(exitCode);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

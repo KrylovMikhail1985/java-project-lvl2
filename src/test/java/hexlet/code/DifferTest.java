@@ -59,14 +59,8 @@ public class DifferTest {
                   + numbers2: [22, 33, 44, 55]
                   - numbers3: [3, 4, 5]
                   + numbers4: [4, 5, 6]
-                    obj1:
-                         {
-                           - aaa: 123
-                           - isNested: false
-                           + isNested: true
-                           + nestedKey: value
-                           - new: 123
-                         }
+                  - obj1: {aaa=123, isNested=false, new=123}
+                  + obj1: {nestedKey=value, isNested=true}
                   - setting1: Some value
                   + setting1: Another value
                   - setting2: 200

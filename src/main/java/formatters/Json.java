@@ -10,7 +10,8 @@ import java.util.Set;
 import static hexlet.code.Differ.valuesIsDifferent;
 
 public class Json {
-    public static String formatJson(Map file1, Map file2, int count) throws JsonProcessingException {
+    public static String formatJson(Map<String, Object> file1, Map<String, Object> file2)
+            throws JsonProcessingException {
         Set<String> allKeys = Differ.getSortedKeys(file1, file2);
         Map<String, Object> map = new LinkedHashMap<>();
         for (String key: allKeys) {
@@ -25,7 +26,6 @@ public class Json {
                 map.put("  " + key, file2.get(key));
             }
         }
-        String json = new ObjectMapper().writeValueAsString(map);
-        return json;
+        return new ObjectMapper().writeValueAsString(map);
     }
 }
