@@ -3,7 +3,6 @@ import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
-import java.nio.file.Path;
 import java.util.concurrent.Callable;
 
 import static hexlet.code.Differ.generate;
@@ -16,10 +15,10 @@ import static hexlet.code.Differ.generate;
 public class App implements Callable<String> {
 //    // For each positional parameter, add a @Parameters-annotated field to your command class.
     @Parameters(index = "0", description = "path to first file.")
-    private static Path filepath1;
+    private static String filepath1;
 
     @Parameters(index = "1", description = "path to second file.")
-    private static Path filepath2;
+    private static String filepath2;
 
     @Option(names = {"-f", "--format"}, description = "output format \"stylish\" or \"plain\" or \"json\" "
             + "[default: stylish]")

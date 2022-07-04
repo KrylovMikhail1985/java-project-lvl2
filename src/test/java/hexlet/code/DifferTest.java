@@ -1,11 +1,7 @@
 package hexlet.code;
 
 import org.junit.jupiter.api.Test;
-
-import java.nio.file.Path;
-
 import static hexlet.code.Differ.generate;
-import static java.nio.file.Path.of;
 import org.junit.jupiter.api.Assertions;
 
 public class DifferTest {
@@ -23,23 +19,23 @@ public class DifferTest {
                 }""";
     @Test
     public void generateTestJson() throws Exception {
-        Path filePath1 = of("file1Test.json");
-        Path filePath2 = of("file2Test.json");
+        String filePath1 = "file1Test.json";
+        String filePath2 = "file2Test.json";
         String actual = generate(filePath1, filePath2, "stylish");
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     public void generateTestYaml() throws Exception {
-        Path filePath1 = of("file3Test.yaml");
-        Path filePath2 = of("file4Test.yaml");
+        String filePath1 = "file3Test.yaml";
+        String filePath2 = "file4Test.yaml";
         String actual = generate(filePath1, filePath2, "stylish");
         Assertions.assertEquals(expected, actual);
     }
     @Test
     public void generateTestYaml2() throws Exception {
-        Path filePath1 = of("file1Test.yaml");
-        Path filePath2 = of("file2Test.yaml");
+        String filePath1 = "file1Test.yaml";
+        String filePath2 = "file2Test.yaml";
         String actual = generate(filePath1, filePath2, "stylish");
         String expected2 = """
                 {
@@ -87,8 +83,8 @@ public class DifferTest {
                   Property 'setting2' was updated. From 200 to 300
                   Property 'setting3' was updated. From true to 'none'
                   """;
-        Path filePath1 = of("file1Test.yaml");
-        Path filePath2 = of("file2Test.yaml");
+        String filePath1 = "file1Test.yaml";
+        String filePath2 = "file2Test.yaml";
         String actual = generate(filePath1, filePath2, "plain");
         Assertions.assertEquals(expectedPlain, actual);
     }
@@ -99,8 +95,8 @@ public class DifferTest {
         final String second = """
                   "  name":"Darya","- surname":"Selezneva","+ surname":"Krylova","- www":null}""";
         final String expectedPlain = first + second;
-        Path filePath1 = of("file1Test.json");
-        Path filePath2 = of("file2Test.json");
+        String filePath1 = "file1Test.json";
+        String filePath2 = "file2Test.json";
         String actual = generate(filePath1, filePath2, "json");
         Assertions.assertEquals(expectedPlain, actual);
     }

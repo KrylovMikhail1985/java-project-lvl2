@@ -3,7 +3,6 @@ package hexlet.code;
 import formatters.Json;
 import formatters.Plain;
 import formatters.Stylish;
-import java.nio.file.Path;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -14,7 +13,7 @@ import static hexlet.code.Parser.fileToMap;
 
 
 public class Differ {
-    public static String generate(Path path1, Path path2, String formatOfOutput) throws Exception {
+    public static String generate(String path1, String path2, String formatOfOutput) throws Exception {
         // create Maps from paths
         Map<String, Object> file1 = fileToMap(path1);
         Map<String, Object> file2 = fileToMap(path2);
