@@ -20,8 +20,8 @@ plugins {
 //    id 'io.freefair.lombok' version '6.4.1'
 //    id 'net.ltgt.errorprone' version '2.0.2'
 }
-group = 'io.hexlet'
-version = '1.0.3-SNAPSHOT'
+group = 'hexlet.code'
+//version = '1.0.3-SNAPSHOT'
 
 repositories {
     // Use Maven Central for resolving dependencies.
