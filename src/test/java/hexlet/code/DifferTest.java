@@ -31,8 +31,8 @@ public class DifferTest {
 
     @Test
     public void generateTestYaml() throws Exception {
-        String filePath1 = "file3Test.yaml";
-        String filePath2 = "file4Test.yaml";
+        String filePath1 = "file3Test.yml";
+        String filePath2 = "file4Test.yml";
         filePath1 = pathToFullPath(filePath1);
         filePath2 = pathToFullPath(filePath2);
         String actual = generate(filePath1, filePath2);
@@ -40,8 +40,8 @@ public class DifferTest {
     }
     @Test
     public void generateTestYaml2() throws Exception {
-        String filePath1 = "file1Test.yaml";
-        String filePath2 = "file2Test.yaml";
+        String filePath1 = "file1Test.yml";
+        String filePath2 = "file2Test.yml";
         filePath1 = pathToFullPath(filePath1);
         filePath2 = pathToFullPath(filePath2);
         String actual = generate(filePath1, filePath2);
@@ -90,8 +90,8 @@ public class DifferTest {
                   Property 'setting1' was updated. From 'Some value' to 'Another value'
                   Property 'setting2' was updated. From 200 to 300
                   Property 'setting3' was updated. From true to 'none'""";
-        String filePath1 = "file1Test.yaml";
-        String filePath2 = "file2Test.yaml";
+        String filePath1 = "file1Test.yml";
+        String filePath2 = "file2Test.yml";
         filePath1 = pathToFullPath(filePath1);
         filePath2 = pathToFullPath(filePath2);
         String actual = generate(filePath1, filePath2, "plain");
