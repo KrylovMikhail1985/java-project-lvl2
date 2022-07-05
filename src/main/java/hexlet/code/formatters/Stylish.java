@@ -63,7 +63,4 @@ public class Stylish {
 
         return sb.toString();
     }
-//    public static Map<String, Object> objToMap(Object obj) {
-//        return ((Map<String, Object>) obj);
-//    }
 }

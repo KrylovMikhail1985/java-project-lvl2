@@ -120,4 +120,38 @@ public class DifferTest {
         }
         throw new IllegalAccessException("файл \"" + path + "\" не существует");
     }
+    @Test
+    public void generateTestJsonWithNullFile1() throws Exception {
+        final String expected3 = """
+                {
+                  - age: 18
+                  - marriage: false
+                  - name: Darya
+                  - surname: Selezneva
+                  - www: null
+                }""";
+        String filePath1 = "file1Test.json";
+        String filePath2 = "emptyFile.yml";
+        filePath1 = pathToFullPath(filePath1);
+        filePath2 = pathToFullPath(filePath2);
+        String actual = generate(filePath1, filePath2);
+        Assertions.assertEquals(expected3, actual);
+    }
+    @Test
+    public void generateTestJsonWithNullFile2() throws Exception {
+        final String expected4 = """
+                {
+                  + age: 18
+                  + marriage: false
+                  + name: Darya
+                  + surname: Selezneva
+                  + www: null
+                }""";
+        String filePath1 = "emptyFile.yml";
+        String filePath2 = "file1Test.json";
+        filePath1 = pathToFullPath(filePath1);
+        filePath2 = pathToFullPath(filePath2);
+        String actual = generate(filePath1, filePath2);
+        Assertions.assertEquals(expected4, actual);
+    }
 }
