@@ -67,12 +67,12 @@ tasks.named('test') {
 }
 compileJava {
     options.release = 17
-//    options.compilerArgs += ["-Aproject=${project.group}/${project.name}"]
+    options.compilerArgs += ["-Aproject=${project.group}/${project.name}"]
 }
-compileTestJava {
-    options.release = 17
-//    options.compilerArgs += ["-Aproject=${project.group}/${project.name}"]
-}
+//compileTestJava {
+//    options.release = 17
+////    options.compilerArgs += ["-Aproject=${project.group}/${project.name}"]
+//}
 test {
     finalizedBy jacocoTestReport // report is always generated after tests run
     useJUnitPlatform()
