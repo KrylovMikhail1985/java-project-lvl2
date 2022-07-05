@@ -25,7 +25,6 @@ public class DifferTest {
         String filePath2 = "file2Test.json";
         filePath1 = pathToFullPath(filePath1);
         filePath2 = pathToFullPath(filePath2);
-        App.format = "stylish";
         String actual = generate(filePath1, filePath2);
         Assertions.assertEquals(expected, actual);
     }
@@ -36,7 +35,6 @@ public class DifferTest {
         String filePath2 = "file4Test.yaml";
         filePath1 = pathToFullPath(filePath1);
         filePath2 = pathToFullPath(filePath2);
-        App.format = "stylish";
         String actual = generate(filePath1, filePath2);
         Assertions.assertEquals(expected, actual);
     }
@@ -46,7 +44,6 @@ public class DifferTest {
         String filePath2 = "file2Test.yaml";
         filePath1 = pathToFullPath(filePath1);
         filePath2 = pathToFullPath(filePath2);
-        App.format = "stylish";
         String actual = generate(filePath1, filePath2);
         String expected2 = """
                 {
@@ -98,8 +95,7 @@ public class DifferTest {
         String filePath2 = "file2Test.yaml";
         filePath1 = pathToFullPath(filePath1);
         filePath2 = pathToFullPath(filePath2);
-        App.format = "plain";
-        String actual = generate(filePath1, filePath2);
+        String actual = generate(filePath1, filePath2, "plain");
         Assertions.assertEquals(expectedPlain, actual);
     }
     @Test
@@ -113,8 +109,7 @@ public class DifferTest {
         String filePath2 = "file2Test.json";
         filePath1 = pathToFullPath(filePath1);
         filePath2 = pathToFullPath(filePath2);
-        App.format = "json";
-        String actual = generate(filePath1, filePath2);
+        String actual = generate(filePath1, filePath2, "json");
         Assertions.assertEquals(expectedPlain, actual);
     }
     public static String pathToFullPath(String path) throws IllegalAccessException {

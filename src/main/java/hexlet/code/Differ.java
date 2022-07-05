@@ -13,18 +13,21 @@ import static hexlet.code.Parser.fileToMap;
 
 
 public class Differ {
-    public static String generate(String path1, String path2) throws Exception {
+    public static String generate(String path1, String path2, String formatOfOutput) throws Exception {
         // create Maps from paths
         Map<String, Object> file1 = fileToMap(path1);
         Map<String, Object> file2 = fileToMap(path2);
         // collect result in need Style
         int spaceBeforeWords = 0;
-        return switch (App.format) {
+        return switch (formatOfOutput) {
             case "stylish" -> Stylish.formatStylish(file1, file2, spaceBeforeWords);
             case "plain" -> Plain.formatPlain(file1, file2);
             case "json" -> Json.formatJson(file1, file2);
-            default -> "pointed format of output \"" + App.format + "\" is not correct! Try without indicating";
+            default -> "pointed format of output \"" + formatOfOutput + "\" is not correct! Try without indicating";
         };
+    }
+    public static String generate(String path1, String path2) throws Exception {
+        return generate(path1, path2, "stylish");
     }
     public static Set<String> keysFromMap(Map<String, Object> map) {
         Set<String> keys = new HashSet<>();

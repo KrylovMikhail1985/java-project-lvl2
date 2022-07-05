@@ -22,13 +22,13 @@ public class App implements Callable<String> {
 
     @Option(names = {"-f", "--format"}, description = "output format \"stylish\" or \"plain\" or \"json\" "
             + "[default: stylish]")
-    public static String format = "stylish";
+    private String format = "stylish";
 
 //  Define your business logic in the run or call method of your class. This method is called after parsing
 //  is successfully completed.
     @Override
     public final String call() throws Exception { // your business logic goes here...
-        System.out.println(generate(filepath1, filepath2));
+        System.out.println(generate(filepath1, filepath2, format));
         return "call is working";
     }
 
