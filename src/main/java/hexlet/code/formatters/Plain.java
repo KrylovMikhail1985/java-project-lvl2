@@ -30,7 +30,7 @@ public class Plain {
                         .append(" to ").append(getValue(file2, key)).append("\n");
             }
         }
-        return sb.toString();
+        return sb.toString().trim();
     }
     public static String getValue(Map<String, Object> file1, String key) {
         String result;

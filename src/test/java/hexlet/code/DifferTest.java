@@ -89,8 +89,7 @@ public class DifferTest {
                   Property 'obj1' was updated. From [complex value] to [complex value]
                   Property 'setting1' was updated. From 'Some value' to 'Another value'
                   Property 'setting2' was updated. From 200 to 300
-                  Property 'setting3' was updated. From true to 'none'
-                  """;
+                  Property 'setting3' was updated. From true to 'none'""";
         String filePath1 = "file1Test.yaml";
         String filePath2 = "file2Test.yaml";
         filePath1 = pathToFullPath(filePath1);
