@@ -5,7 +5,7 @@ import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 import java.util.concurrent.Callable;
 
-import static hexlet.code.Differ.generate;
+import static hexlet.code.Differ.gener;
 
 //    Annotate the class with @Command and give it a name. The mixinStandardHelpOptions attribute adds --help and
 //     --version options to your application.
@@ -28,7 +28,7 @@ public class App implements Callable<String> {
 //  is successfully completed.
     @Override
     public final String call() throws Exception { // your business logic goes here...
-        System.out.println(generate(filepath1, filepath2, format));
+        System.out.println(gener(filepath1, filepath2, format));
         return "call is working";
     }
 

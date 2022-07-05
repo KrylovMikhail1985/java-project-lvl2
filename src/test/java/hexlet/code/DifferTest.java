@@ -1,7 +1,7 @@
 package hexlet.code;
 
 import org.junit.jupiter.api.Test;
-import static hexlet.code.Differ.generate;
+import static hexlet.code.Differ.gener;
 import org.junit.jupiter.api.Assertions;
 
 import java.io.File;
@@ -26,7 +26,7 @@ public class DifferTest {
         filePath1 = pathToFullPath(filePath1);
         filePath2 = pathToFullPath(filePath2);
         String format = "stylish";
-        String actual = generate(filePath1, filePath2, format);
+        String actual = gener(filePath1, filePath2, format);
         Assertions.assertEquals(expected, actual);
     }
 
@@ -37,7 +37,7 @@ public class DifferTest {
         filePath1 = pathToFullPath(filePath1);
         filePath2 = pathToFullPath(filePath2);
         String format = "stylish";
-        String actual = generate(filePath1, filePath2, format);
+        String actual = gener(filePath1, filePath2, format);
         Assertions.assertEquals(expected, actual);
     }
     @Test
@@ -47,7 +47,7 @@ public class DifferTest {
         filePath1 = pathToFullPath(filePath1);
         filePath2 = pathToFullPath(filePath2);
         String format = "stylish";
-        String actual = generate(filePath1, filePath2, format);
+        String actual = gener(filePath1, filePath2, format);
         String expected2 = """
                 {
                     chars1: [a, b, c]
@@ -99,7 +99,7 @@ public class DifferTest {
         filePath1 = pathToFullPath(filePath1);
         filePath2 = pathToFullPath(filePath2);
         String format = "plain";
-        String actual = generate(filePath1, filePath2, format);
+        String actual = gener(filePath1, filePath2, format);
         Assertions.assertEquals(expectedPlain, actual);
     }
     @Test
@@ -114,7 +114,7 @@ public class DifferTest {
         filePath1 = pathToFullPath(filePath1);
         filePath2 = pathToFullPath(filePath2);
         String format = "json";
-        String actual = generate(filePath1, filePath2, format);
+        String actual = gener(filePath1, filePath2, format);
         Assertions.assertEquals(expectedPlain, actual);
     }
     public static String pathToFullPath(String path) throws IllegalAccessException {
