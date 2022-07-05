@@ -33,9 +33,13 @@ public final class Parser {
         String path1 = "src/main/resources";
         File file = new File(path1);
         String absolutePath = file.getAbsolutePath();
-        if (!path.startsWith("/home")) {
-            return Path.of(absolutePath + "/" + path);
+        Path resultPath = Path.of(path);
+        if (!path.startsWith("/")) {
+            resultPath = Path.of(absolutePath + "/" + path);
         }
-        return Path.of(path);
+        if (new File(resultPath.toString()).exists()) {
+            return resultPath;
+        }
+        throw new RuntimeException("Файл: " + resultPath + " не существует");
     }
 }
