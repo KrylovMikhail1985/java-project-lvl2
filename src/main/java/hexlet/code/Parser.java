@@ -29,7 +29,7 @@ public final class Parser {
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         return mapper.readValue(readString(path), new TypeReference<>() { });
     }
-    public static Path pathToFullPath(String path) throws IllegalAccessException {
+    public static Path pathToFullPath(String path) {
         String path1 = "src/main/resources";
         File file = new File(path1);
         String absolutePath = file.getAbsolutePath();
