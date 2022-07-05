@@ -31,6 +31,9 @@ public class Differ {
     }
     public static Set<String> keysFromMap(Map<String, Object> map) {
         Set<String> keys = new HashSet<>();
+        if (map == null) {
+            return keys;
+        }
         for (Map.Entry<String, Object> pair: map.entrySet()) {
             keys.add(pair.getKey());
         }

@@ -10,7 +10,13 @@ public class Stylish {
         String space = " ";
         final StringBuilder sb = new StringBuilder(space.repeat(count) + "{\n");
         for (String key: allKeys) {
-            if (file1.containsKey(key) && !file2.containsKey(key)) {
+            if (file1 == null) {
+                sb.append(space.repeat(count)).append("  + ").append(key).append(": ").append(file2.get(key))
+                        .append("\n");
+            } else if (file2 == null) {
+                sb.append(space.repeat(count)).append("  - ").append(key).append(": ").append(file1.get(key))
+                        .append("\n");
+            } else if (file1.containsKey(key) && !file2.containsKey(key)) {
                 sb.append(space.repeat(count)).append("  - ").append(key).append(": ").append(file1.get(key))
                         .append("\n");
             } else if (!file1.containsKey(key) && file2.containsKey(key)) {
