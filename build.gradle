@@ -30,17 +30,17 @@ repositories {
 
 dependencies {
     //add these dependencies from another project
-//    implementation 'org.apache.commons:commons-lang3:3.12.0'
-//    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
-//    testImplementation(
-//            'org.junit.jupiter:junit-jupiter-params:5.8.2',
-//            'org.slf4j:slf4j-log4j12:2.0.0-alpha6',
-//            'org.assertj:assertj-core:3.23.1'
-//    )
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    testImplementation(
+            'org.junit.jupiter:junit-jupiter-params:5.8.2',
+            'org.slf4j:slf4j-log4j12:2.0.0-alpha6',
+            'org.assertj:assertj-core:3.23.1'
+    )
 //    annotationProcessor 'info.picocli:picocli-codegen:4.6.3'
 //    testImplementation 'org.jacoco:org.jacoco.agent:0.8.8'
     // Use JUnit Jupiter for testing.
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+//    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
 
     // configuring Gradle to use "picocli" as an external dependency in your project
     implementation 'info.picocli:picocli:4.6.3'
@@ -76,21 +76,21 @@ compileTestJava {
 test {
     finalizedBy jacocoTestReport // report is always generated after tests run
     useJUnitPlatform()
-    jacoco {
-        enabled = true
-        destinationFile = layout.buildDirectory.file("jacoco/${name}.exec").get().asFile
-        includes = []
-        excludes = []
-        excludeClassLoaders = []
-        includeNoLocationClasses = false
-        sessionId = "db5cdb8223e5c365b028"
-        dumpOnExit = true
-        classDumpDir = null
-        output = JacocoTaskExtension.Output.FILE
-        address = "localhost"
-        port = 6300
-        jmx = false
-    }
+//    jacoco {
+//        enabled = true
+//        destinationFile = layout.buildDirectory.file("jacoco/${name}.exec").get().asFile
+//        includes = []
+//        excludes = []
+//        excludeClassLoaders = []
+//        includeNoLocationClasses = false
+//        sessionId = "db5cdb8223e5c365b028"
+//        dumpOnExit = true
+//        classDumpDir = null
+//        output = JacocoTaskExtension.Output.FILE
+//        address = "localhost"
+//        port = 6300
+//        jmx = false
+//    }
 }
 jacocoTestReport {
 //    dependsOn test // tests are required to run before generating the report
