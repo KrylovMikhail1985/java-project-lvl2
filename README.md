@@ -1,6 +1,6 @@
 ## Difference Calculator
-Application for compare two files and shows a difference.
-Usable formats: json и yml.
+Application compares two files and shows a difference.
+Usable formats: json and yml.
 Conclusion may be in two various presentations (watch help). 
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/KrylovMikhail1985/java-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/KrylovMikhail1985/java-project-lvl2/actions)
